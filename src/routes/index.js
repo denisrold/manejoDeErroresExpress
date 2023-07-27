@@ -1,8 +1,10 @@
 const { Router } = require("express");
 const { moviesControllers } = require("../controllers/index");
+const validatedName = require("../middleware/validatedName");
 const router = Router();
 
-router.get("/movies", moviesControllers.getMovies);
+//LE PASO EL MIDDLEWARE DE VALIDACIONES. ANTES DE HACER NEXT A MOVIESCONTROLLERS.GETMOVIES
+router.get("/movies", validatedName, moviesControllers.getMovies);
 
 router.get("/movies/:id", moviesControllers.getMovieById);
 

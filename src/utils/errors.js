@@ -8,6 +8,11 @@ class ClientError extends Error {
   }
 }
 
+//TAMBIEN PUEDO TENER ERRORES MAS ESPECIFICOS Y NO TAN GENERICOS:
+class AuthClientError extends Error {
+  //
+}
+
 module.exports = { ClientError };
 
 //PUEDO USAR ESTA CLASE EN MIS SERVICIOS

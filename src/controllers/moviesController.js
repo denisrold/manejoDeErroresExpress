@@ -7,7 +7,10 @@ const getMovies = async (req, res, next) => {
   //Maneja la logica de negocio de la peticion que recibio
   //Tiene que obtener informacion de peliculas y responder al cliente con ellas.
   //LA INFORMACION DE PELICULAS SE LA PROVEE EL SERVICIO
-  const movies = await moviesService.getAllMovies();
+  const { name } = req.query;
+  const movies = (await name)
+    ? await moviesService.getMoviesByName(name)
+    : await moviesService.getAllMovies();
   response(res, 200, movies);
 };
 

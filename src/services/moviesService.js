@@ -29,7 +29,17 @@ const getMovieById = async (id) => {
   return movie;
 };
 
+const getMoviesByName = async (name) => {
+  const movie = data.filter((e) => {
+    return e.title == name;
+  });
+  //  if (!movie) throw new ClientError("Invalid Name", 401); Esto no, porque la busqueda que no arroja resultado no es un error.
+  //es una buqueda sin resultados nada mas.
+  return movie;
+};
+
 module.exports = {
   getAllMovies,
   getMovieById,
+  getMoviesByName,
 };
