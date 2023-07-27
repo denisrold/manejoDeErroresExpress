@@ -1,3 +1,6 @@
+//importo mis errores personalizados
+const { ClientError } = require("../utils/errors");
+
 const data = [
   {
     id: 1,
@@ -20,7 +23,9 @@ const getMovieById = async (id) => {
   const movie = data.find((e) => {
     return e.id == id;
   });
-  if (!movie) throw Error("Invalid ID");
+  //si se da cuenta que la pelicula no esta, arrojo un error, pero no un throw Error("Invalid ID"); arrojo un error de mi clase personalizada
+  if (!movie) throw new ClientError("Invalid ID", 401);
+  //el estatus podria ser cualquiera, recordar que es por defecto 400
   return movie;
 };
 
